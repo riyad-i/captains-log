@@ -20,6 +20,7 @@ const Log = require('./models/logs')
 
 app.get('/', async (req, res) => {
     const logs = await Log.find({})
+    console.log(logs);
     res.render('Index', {logs})
 })
 
