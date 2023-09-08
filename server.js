@@ -15,12 +15,18 @@ app.engine('jsx', jsxEngine());
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 
+const Log = require('./models/logs')
+
+
 app.get('/', async (req, res) => {
-    // const logs = 
+    const logs = await Log.find({})
     res.render('Index', {logs})
 })
 
-
+app.post('/', async (req, res) => {
+    const log = await Log.create(req.body)
+    res.send(log)
+})
 
 
 
